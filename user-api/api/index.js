@@ -85,9 +85,14 @@ app.delete('/api/user/favourites/:id',
 let isConnected = false;
 
 module.exports = async (req, res) => {
-  if (!isConnected) {
-    await userService.connect();
-    isConnected = true;
+  try {
+    if (!isConnected) {
+      await userService.connect();
+      isConnected = true;
+    }
+    return app(req, res);
+  } catch (error) {
+    console.error('Function error:', error);
+    return res.status(500).json({ error: error.message });
   }
-  return app(req, res);
 };
