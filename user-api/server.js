@@ -8,7 +8,7 @@
 *
 * Name: Mohit Solanki Student ID: 1331874232 Date: 26/11/2025
 *
-* Published URL: ___________________________________________________________
+* Published URL: https://web-assignemnt-3.vercel.app/api/user
 *
 ********************************************************************************/
 
