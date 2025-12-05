@@ -99,10 +99,10 @@ app.delete('/api/user/favourites/:id',
 
 userService.connect()
   .then(() => {
-    app.listen(PORT, () => {
-      console.log(`User API listening on port ${PORT}`);
-    });
+    console.log('Connected to MongoDB');
   })
   .catch((err) => {
-    console.error(`Failed to start server: ${err}`);
+    console.error(`Failed to connect to MongoDB: ${err}`);
   });
+
+module.exports = app;
