@@ -53,7 +53,7 @@ app.post('/api/user/login', (req, res) => {
   userService.checkUser(req.body)
     .then((user) => {
       const payload = { _id: user._id, userName: user.userName };
-      const token = jwt.sign(payload, process.env.JWT_SECRET);
+      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '7d' });
       res.json({ message: 'login successful', token });
     })
     .catch((err) => res.status(400).json({ message: err }));
