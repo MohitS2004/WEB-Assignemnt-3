@@ -7,9 +7,7 @@ import { favouritesAtom } from '@/store';
 const Favourites = () => {
   const [favouritesList] = useAtom(favouritesAtom);
 
-  if (!favouritesList) return null;
-
-  if (!favouritesList.length) {
+  if (!favouritesList || !favouritesList.length) {
     return (
       <>
         <PageHeader text="No Favourites Yet" subtext="Add books to your favourites list to view them here." />

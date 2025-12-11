@@ -9,7 +9,7 @@ import { isAuthenticated } from '@/lib/authenticate';
 import { getFavourites } from '@/lib/userData';
 import { favouritesAtom } from '@/store';
 
-const publicPaths = ['/login', '/register'];
+const publicPaths = ['/login', '/register', '/about', '/'];
 
 const RouteGuard = ({ children }) => {
   const router = useRouter();
@@ -47,19 +47,19 @@ const RouteGuard = ({ children }) => {
     };
   }, [authCheck, router.events, router.pathname]);
 
-  return authorized && children;
+  return authorized ? children : null;
 };
 
 function MyApp({ Component, pageProps }) {
   return (
-    <SSRProvider>
+    <>
       <RouteGuard>
         <MainNav />
         <Container className="py-4">
           <Component {...pageProps} />
         </Container>
       </RouteGuard>
-    </SSRProvider>
+    </>
   );
 }
 
